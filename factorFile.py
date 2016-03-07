@@ -7,7 +7,7 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 #from tkinter import Tk
 
-
+#As the range of features continues to expand, working towards class seperation. 
 #Factor Scripts
 #Shawn Owen
 
