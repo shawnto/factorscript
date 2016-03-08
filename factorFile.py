@@ -5,9 +5,11 @@ import Tkinter as tk
 import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
+import takeScreenshot
+import locationDatas
 #from tkinter import Tk
 
-#As the range of features continues to expand, working towards class seperation. 
+
 #Factor Scripts
 #Shawn Owen
 
@@ -76,6 +78,10 @@ vendorNumber = '3696'
 itemNumber = '111'
 itemDesc = '11'
 
+
+
+
+
 #x_cord_AddLine = 727
 #y_cord_AddLine = 713
 #x_cord_EditLine = 787
@@ -123,6 +129,17 @@ def enterMulti(num):
     for i in range(0,num):
         autopy.key.tap(autopy.key.K_RETURN)
         time.sleep(.05)
+
+def validateFieldEditable(location,x,y):
+    #Take the image values of the case field.
+    temp = takeScreenshot.screenShot(location)
+    leftClickLocation(x,y)
+    #move the mouse cursor out of the way for next check
+    leftClickLocation(1156,454)
+    time.sleep(.05)
+    temp2 = takeScreenshot.screenShot(location)
+    #ensure field is highlighted.
+    return (takeScreenshot.compareScreenShot(temp,temp2))
 
 #navigate to file maintanence menu
 def toFileMaint():
@@ -361,11 +378,16 @@ def addItemPriceChange():
     if(multiPrice != '0'):
         enterDataWClick(multiPrice,x_cord_MultiField,y_cord_MultiField)
         time.sleep(.05)
-    if(casePrice != '0'):
+    if(casePrice != '0' and validateFieldEditable('Case',x_cord_CaseField,
+                                                  y_cord_CaseField)):
+        #reset the field, enter the data
+        leftClickLocation(x_cord_CostField,y_cord_CostField)
         enterDataWClick(casePrice,x_cord_CaseField,
                         y_cord_CaseField)
         time.sleep(.05)
     if(enteringRetail != '0'):
+        #reset the field, enter the data
+        leftClickLocation(x_cord_CostField,y_cord_CostField)
         enterDataWClick(enteringRetail,
                         x_cord_EnteringRetailField,
                         y_cord_EnteringRetailField)
@@ -649,7 +671,7 @@ elif(typeOfProcess == 4):
 else:
     print "CANCELLED"
    
-#leave exit validation, need to review verification lists.
+
 pauseText = input("Enter any Key to exit")
 #print x,y <- for pixel hunting.
 
