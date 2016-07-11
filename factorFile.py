@@ -28,7 +28,7 @@ y_cord_AdvCStore  = 456
 x_cord_PriceFileMaint = 742
 y_cord_PriceFileMaint = 698 # At Work
 #x_cord_setFocusClick = 773
-#y_cord_setFocusClick = 238 
+#y_cord_setFocusClick = 238
 x_cord_setFocusClick = 974 #At Work
 y_cord_setFocusClick = 322
 x_cord_CostField = 915
@@ -53,17 +53,17 @@ y_upcNumbers = 469
 #Price Change Values
 #Default values for compiler
 vendorNumber = '1111'
-zoneNumber = '1111' 
+zoneNumber = '1111'
 subZone  = '1111'
 promoPrice = '1111'
 startDate = '1111'
-endDate = '1111'  
-itemNumber = '111' 
+endDate = '1111'
+itemNumber = '111'
 singlePrice = '11'
 multiPrice = '111'
 casePrice = '111'
-enteringRetail = '111' 
-cost = '111' 
+enteringRetail = '111'
+cost = '111'
 #Item Add Values
 itemDesc = '111'
 packingSize = '111'
@@ -125,7 +125,7 @@ def dragToLocation(x,y):
     autopy.mouse.toggle(down,mouse.LEFT_BUTTON)
     autopy.mouse.smooth_move(x,y)
     autopy.mouse.toggle(up, mouse.LEFT_BUTTON)
-    
+
 #Move over num times. NOTE: USES 'ENTER',
 #USE leftClickLocation for sensitive data
 def enterMulti(num):
@@ -181,7 +181,7 @@ def readSourceFileAddItem():
                 itemInfo.append(cellObj.value)
                 #print(cellObj)
                 #print(itemInfo)
-                
+
         index += 1
         #while values in "itemInfo" run process
         if(itemInfo):
@@ -191,7 +191,7 @@ def readSourceFileAddItem():
             leftClickLocation(x_cord_setFocusClick,y_cord_setFocusClick)
             autopy.key.tap('i',autopy.key.MOD_ALT)
             cont = input("Type 1 to continue")
-#See above       
+#See above
 def readSourceFileAddPrice():
     toPriceFileMaint()
     itemInfo = []
@@ -283,7 +283,7 @@ def readSourceValidateInfo(infoToCheck,upcFlag):
             autopy.key.tap('c',autopy.key.MOD_ALT)
             time.sleep(1.5)
     autopy.key.tap('x',autopy.key.MOD_ALT)
-            
+
 def setItemValues(itemInfoCopy):
     #Price Change Values
     itemInfoCopy.reverse()
@@ -341,10 +341,10 @@ def setItemValues(itemInfoCopy):
     foodStamp = itemInfoCopy.pop()
     global idRequired
     idRequired = itemInfoCopy.pop()
-    #isCoolerItem is a value for item database project. 
+    #isCoolerItem is a value for item database project.
     global isCoolerItem
     isCoolerItem = itemInfoCopy.pop()
-    
+
 #for all adds and edits, the appropriate menu must be opened in factor.
 
 
@@ -400,7 +400,7 @@ def addItemPriceChange():
 #edit a line
 #reads the appropriate field, and edits the line.
 def editLine(infoToChange):
-    
+
     autopy.key.tap('e',autopy.key.MOD_ALT)
     time.sleep(.5)
     enterData(vendorNumber)
@@ -508,7 +508,7 @@ def toSelectAll(x,y):
     autopy.key.tap(autopy.key.K_RETURN)
     time.sleep(.5)
     autopy.key.tap('c',autopy.key.MOD_CONTROL)
-    
+
 #copys to the clipboard.
 def pullText(x,y):
     board = tk.Tk()
@@ -646,7 +646,7 @@ def validateUpc(upcType):
             return 0
         else:
             return 1
-    
+
 #below is helpful to keep in code for pixel hunting
 #x,y = autopy.mouse.get_pos()
 
@@ -673,8 +673,7 @@ elif(typeOfProcess == 4):
     readSourceFileEditLine()
 else:
     print "CANCELLED"
-   
+
 
 pauseText = input("Enter any Key to exit")
 #print x,y <- for pixel hunting.
-
