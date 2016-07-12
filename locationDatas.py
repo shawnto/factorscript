@@ -4,5 +4,4 @@ y_valUpperCase = 534
 x_valLowerCase = 1174
 y_valLowerCase = 551
 
-
-
+x_someOtherValue = 150
